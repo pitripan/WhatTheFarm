@@ -1,0 +1,22 @@
+## Interface: 80200
+## Title: What the farm?!
+## Version: 1.0.0
+## Author: PitriPan
+## Notes: This addon tracks your farming statistics while looting items or gathering ressources.
+## Notes-deDE: Dieses Addon erfasst aktuelle Statistiken beim Plündern von Gegenständen oder Sammeln von Ressourcen.
+## DefaultState: enabled
+## SavedVariables: WhatTheFarmDB
+## X-Date: 2020-12-30T20:00:00Z
+## X-Website: https://www.curseforge.com/wow/addons/what-the-farm
+## X-License: GNU General Public License v3
+## X-Category: Bags & Inventory, Auction & Economy, Professions
+## X-Localizations: enUS, deDE
+
+embeds.xml
+locale\enUS.lua
+locale\deDE.lua
+core\colors.lua
+core\defaults.lua
+WhatTheFarm.lua
+WhatTheFarm.xml
+core\config.lua
