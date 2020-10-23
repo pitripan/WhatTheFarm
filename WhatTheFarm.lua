@@ -5,9 +5,9 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("WhatTheFarm", {
   text = L["WTF_MMBTooltipTitle"],
   icon = "Interface\\Icons\\INV_Misc_Note_03",
   OnTooltipShow = function(tooltip)
-       tooltip:SetText(L["WTF_MMBTooltipTitle"])
-       tooltip:AddLine(L["WTF_MMBTooltipInfo"], 1, 1, 1)
-       tooltip:Show()
+    tooltip:SetText(L["WTF_MMBTooltipTitle"])
+    tooltip:AddLine(L["WTF_MMBTooltipInfo"], 1, 1, 1)
+    tooltip:Show()
   end,
   OnClick = function(self, button)
     if button == "LeftButton" then
@@ -166,10 +166,10 @@ local function addNewLine(position)
   wtfNewItemName:SetText("")
   wtfNewItemName:SetSize(scrollFrameWidth - 80, _LineHeight)
   wtfNewItemName:SetScript("OnEnter", function(self)
-      GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
-      GameTooltip:SetText(self:GetText())
-      --PTHTODO: Tooltip erweitern?
-      GameTooltip:Show()
+    GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+    GameTooltip:SetText(self:GetText())
+    --PTHTODO: Tooltip erweitern?
+    GameTooltip:Show()
   end)
   wtfNewItemName:SetNormalFontObject(fontForName)
   wtfNewItemName:SetHighlightFontObject(fontForName)
@@ -380,14 +380,14 @@ local function sortItemsByCount(self, button)
   if button == "LeftButton" then
   	table.sort(helperTable, function(a, b)
       if a.itemCount == b.itemCount then
-          return a.itemName < b.itemName
+        return a.itemName < b.itemName
       end
       return a.itemCount < b.itemCount
     end)
   elseif button == "RightButton" then
     table.sort(helperTable, function(a, b)
       if a.itemCount == b.itemCount then
-          return a.itemName < b.itemName
+        return a.itemName < b.itemName
       end
       return a.itemCount > b.itemCount
     end)
@@ -395,7 +395,7 @@ local function sortItemsByCount(self, button)
 
   -- fill sorted array
   for i = 1, #helperTable do
-      linesSorted[i] = helperTable[i].itemId
+    linesSorted[i] = helperTable[i].itemId
   end
 
   -- replace old array with sorted array
@@ -520,8 +520,8 @@ function WTFAddon_SetupGUI()
   --   insets = { left = 0, right = 0, top = 0, bottom = 0 },
   -- })
   WTFAddon.farmListFrame.scrollFrame:SetScript("OnVerticalScroll", function(self, offset)
-     FauxScrollFrame_OnVerticalScroll(self, offset, 16, WhatTheFarm_ScrollFrame_Update)
-   end)
+    FauxScrollFrame_OnVerticalScroll(self, offset, 16, WhatTheFarm_ScrollFrame_Update)
+  end)
   WTFAddon.farmListFrame.scrollFrame:SetScript("OnShow", WhatTheFarm_ScrollFrame_Update)
 
   -- create header line
@@ -544,9 +544,9 @@ function WTFAddon_SetupGUI()
     wtfItemNameHeader:SetSize(scrollFrameWidth - 80, _LineHeight)
     wtfItemNameHeader:RegisterForClicks("LeftButtonUp", "RightButtonUp")
     wtfItemNameHeader:SetScript("OnEnter", function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
-        GameTooltip:SetText(L["WTF_SortBy_Tooltip"])
-        GameTooltip:Show()
+      GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
+      GameTooltip:SetText(L["WTF_SortBy_Tooltip"])
+      GameTooltip:Show()
     end)
     wtfItemNameHeader:SetScript("OnClick", function(self, button)
       sortItemsByName(self, button)
@@ -562,9 +562,9 @@ function WTFAddon_SetupGUI()
     wtfItemCountHeader:SetSize(32, _LineHeight)
     wtfItemCountHeader:RegisterForClicks("LeftButtonUp", "RightButtonUp")
     wtfItemCountHeader:SetScript("OnEnter", function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
-        GameTooltip:SetText(L["WTF_SortBy_Tooltip"])
-        GameTooltip:Show()
+      GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
+      GameTooltip:SetText(L["WTF_SortBy_Tooltip"])
+      GameTooltip:Show()
     end)
     wtfItemCountHeader:SetScript("OnClick", function(self, button)
       sortItemsByCount(self, button)
@@ -717,7 +717,7 @@ function WhatTheFarm_ScrollFrame_Update(self)
       _G["WTFItemCount_"..line]:SetText(itemInfo.itemCount)
       _G["WTFItemCount_"..line]:SetTextColor(r, g, b, 1)
       _G["WTFItemIgnore_"..line]:SetScript("OnClick", function(self)
-          addItemToIgnoreList(itemId)
+        addItemToIgnoreList(itemId)
       end)
       -- show line
       _G["WTFItemIcon_"..line]:Show()

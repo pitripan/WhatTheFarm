@@ -47,8 +47,8 @@ local function createSlider(parent, name, label, description, minVal, maxVal, va
 	slider:SetScript("OnValueChanged", function(self,value)
 		self.editbox:SetNumber(floor(value))
 		if(not self.editbox:HasFocus()) then
-			self.editbox:SetCursorPosition(0);
-			self.editbox:ClearFocus();
+			self.editbox:SetCursorPosition(0)
+			self.editbox:ClearFocus()
 		end
     onValueChanged(self, value)
 	end)
@@ -113,10 +113,10 @@ local function createEditbox(parent, name, tooltipTitle, tooltipDescription, wid
 		onTextChanged(self)
 	end)
 	editbox:SetScript("OnEnter", function(self, motion)
-		MakePeopleGreetAgain_ShowTooltip(self, tooltipTitle, tooltipDescription)
+		-- MakePeopleGreetAgain_ShowTooltip(self, tooltipTitle, tooltipDescription)
 	end)
 	editbox:SetScript("OnLeave", function(self, motion)
-		MakePeopleGreetAgain_HideTooltip(self)
+		-- MakePeopleGreetAgain_HideTooltip(self)
 	end)
 
   return editbox
@@ -147,9 +147,9 @@ local function createItemLineForConfig(prefix, position)
   wtfNewItemName:SetText("")
   wtfNewItemName:SetSize(scrollFrameWidth - 80, _LineHeight)
   wtfNewItemName:SetScript("OnEnter", function(self)
-      GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
-      GameTooltip:SetText(self:GetText())
-      GameTooltip:Show()
+    GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+    GameTooltip:SetText(self:GetText())
+    GameTooltip:Show()
   end)
   wtfNewItemName:SetNormalFontObject(fontForName)
   wtfNewItemName:SetHighlightFontObject(fontForName)
@@ -205,7 +205,7 @@ local function sortIgnoredItemsByName(self, button)
 
   -- fill sorted array
   for i = 1, #helperTable do
-      linesSorted[i] = helperTable[i].itemId
+    linesSorted[i] = helperTable[i].itemId
   end
 
   -- replace old array with sorted array
@@ -394,9 +394,9 @@ function WTFAddon_SetupOptionsUI()
 	  --   edgeSize = 32,
 	  --   insets = { left = 0, right = 0, top = 0, bottom = 0 },
 	  -- })
-	  WTFAddon.optionsFrame.scrollFrameIgnore:SetScript("OnVerticalScroll", function(self, offset)
-	     FauxScrollFrame_OnVerticalScroll(self, offset, 16, WTFAddon_IgnoreList_Update)
-	   end)
+    WTFAddon.optionsFrame.scrollFrameIgnore:SetScript("OnVerticalScroll", function(self, offset)
+      FauxScrollFrame_OnVerticalScroll(self, offset, 16, WTFAddon_IgnoreList_Update)
+    end)
 	  WTFAddon.optionsFrame.scrollFrameIgnore:SetScript("OnShow", WTFAddon_IgnoreList_Update)
 
 	  -- create header line
@@ -419,9 +419,9 @@ function WTFAddon_SetupOptionsUI()
 	    wtfItemNameHeader:SetSize(scrollFrameWidth - 80, _LineHeight)
 	    wtfItemNameHeader:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 	    wtfItemNameHeader:SetScript("OnEnter", function(self)
-	        GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
-	        GameTooltip:SetText(L["WTF_SortBy_Tooltip"])
-	        GameTooltip:Show()
+        GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT")
+        GameTooltip:SetText(L["WTF_SortBy_Tooltip"])
+        GameTooltip:Show()
 	    end)
 	    wtfItemNameHeader:SetScript("OnClick", function(self, button)
 	      sortIgnoredItemsByName(self, button)
@@ -515,8 +515,8 @@ function WTFAddon_IgnoreList_Update(self)
       _G["WTFItemName_IgnoreList_"..line]:SetText(itemName)
       _G["WTFItemName_IgnoreList_"..line]:GetFontString():SetTextColor(r, g, b, 1)
       _G["WTFItemIgnore_IgnoreList_"..line]:SetScript("OnClick", function(self)
-          removeItemFromIgnoreList(itemId)
-					WTFAddon:Print(string.format(L["WTF_IgnoreList_Unignore"], itemName))
+        removeItemFromIgnoreList(itemId)
+        WTFAddon:Print(string.format(L["WTF_IgnoreList_Unignore"], itemName))
       end)
       -- show line
       _G["WTFItemIcon_IgnoreList_"..line]:Show()
